@@ -1,14 +1,11 @@
 package de.materna.candylord;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 class Player {
-    Candy candy1 = new Candy("candy1", 0);
-    Candy candy2 = new Candy("candy2", 0);
-    Candy candy3 = new Candy("candy3", 0);
-    Candy candy4 = new Candy("candy4", 0);
-    Candy candy5 = new Candy("candy5", 0);
-    Candy candy6 = new Candy("candy6", 0);
+    List<Candy> candies = new ArrayList<>();
     String location;
     int capacity;
     double cash;
@@ -19,6 +16,13 @@ class Player {
         this.cash = cash;
         this.debt = debt;
         this.location = location;
+
+        candies.add(new Candy("Candy1", 0));
+        candies.add(new Candy("Candy2", 0));
+        candies.add(new Candy("Candy3", 0));
+        candies.add(new Candy("Candy4", 0));
+        candies.add(new Candy("Candy5", 0));
+        candies.add(new Candy("Candy6", 0));
     }
 
     public Player getPlayer() {

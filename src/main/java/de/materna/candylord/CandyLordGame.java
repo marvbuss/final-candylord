@@ -10,17 +10,8 @@ public class CandyLordGame {
     CityENUM cityENUM4 = CityENUM.MUNICH;
     CityENUM cityENUM5 = CityENUM.FRANKFURT;
     CityENUM cityENUM6 = CityENUM.STUTTGART;
-    private String randomCity(){
-        double random = Math.random();
-        if ( random < 0.166 ) return cityENUM1.toString();
-        if ( random < 0.333 ) return cityENUM2.toString();
-        if ( random < 0.5 ) return cityENUM3.toString();
-        if ( random < 0.666 ) return cityENUM4.toString();
-        if ( random < 0.833 ) return cityENUM5.toString();
-        return cityENUM6.toString();
-    }
 
-    Player currentPlayer = new Player(currentGame.startCash, currentGame.startDebt, currentGame.capacity, randomCity());
+    Player currentPlayer = new Player(currentGame.startCash, currentGame.startDebt, currentGame.capacity, currentGame.randomCity());
     GameEconomy currentEconomy = new GameEconomy();
 
     public void startGame(){
@@ -29,12 +20,9 @@ public class CandyLordGame {
                 System.out.println("Current Location: " + currentPlayer.location);
                 System.out.println("Current Cash: " + currentPlayer.cash + "€" +" Current Debt: " + currentPlayer.debt + "€");
                 System.out.println("Current Capacity: " + currentPlayer.capacity);
-                System.out.println("Current Amount " + currentPlayer.candy1.name + ": " + currentPlayer.candy1.quantity);
-                System.out.println("Current Amount " + currentPlayer.candy1.name + ": " + currentPlayer.candy2.quantity);
-                System.out.println("Current Amount " + currentPlayer.candy3.name + ": " + currentPlayer.candy3.quantity);
-                System.out.println("Current Amount " + currentPlayer.candy4.name + ": " + currentPlayer.candy4.quantity);
-                System.out.println("Current Amount " + currentPlayer.candy5.name + ": " + currentPlayer.candy5.quantity);
-                System.out.println("Current Amount " + currentPlayer.candy6.name + ": " + currentPlayer.candy6.quantity);
+                for(Candy candy : currentPlayer.candies){
+                    System.out.println("Current Amount " + candy.getName() + ": " + candy.getQuantity());
+                }
                 System.out.println("----------------------------------------");
                 System.out.println("Price Candy1: " + currentEconomy.getPriceCandy1()+ "€");
                 System.out.println("Price Candy2: " + currentEconomy.getPriceCandy2()+ "€");
@@ -102,12 +90,12 @@ public class CandyLordGame {
 
 
         switch (input) {
-            case 1 -> currentPlayer.buyCandy(currentPlayer.candy1, currentEconomy.getPriceCandy1());
-            case 2 -> currentPlayer.buyCandy(currentPlayer.candy2, currentEconomy.getPriceCandy2());
-            case 3 -> currentPlayer.buyCandy(currentPlayer.candy3, currentEconomy.getPriceCandy3());
-            case 4 -> currentPlayer.buyCandy(currentPlayer.candy4, currentEconomy.getPriceCandy4());
-            case 5 -> currentPlayer.buyCandy(currentPlayer.candy5, currentEconomy.getPriceCandy5());
-            case 6 -> currentPlayer.buyCandy(currentPlayer.candy6, currentEconomy.getPriceCandy6());
+            case 1 -> currentPlayer.buyCandy(currentPlayer.candies.get(0), currentEconomy.getPriceCandy1());
+            case 2 -> currentPlayer.buyCandy(currentPlayer.candies.get(1), currentEconomy.getPriceCandy2());
+            case 3 -> currentPlayer.buyCandy(currentPlayer.candies.get(2), currentEconomy.getPriceCandy3());
+            case 4 -> currentPlayer.buyCandy(currentPlayer.candies.get(3), currentEconomy.getPriceCandy4());
+            case 5 -> currentPlayer.buyCandy(currentPlayer.candies.get(4), currentEconomy.getPriceCandy5());
+            case 6 -> currentPlayer.buyCandy(currentPlayer.candies.get(5), currentEconomy.getPriceCandy6());
             default -> {
                 break;
             }
@@ -126,12 +114,12 @@ public class CandyLordGame {
         int input = scan.nextInt();
 
         switch (input) {
-            case 1 -> currentPlayer.sellCandy(currentPlayer.candy1, currentEconomy.getPriceCandy1());
-            case 2 -> currentPlayer.sellCandy(currentPlayer.candy2, currentEconomy.getPriceCandy2());
-            case 3 -> currentPlayer.sellCandy(currentPlayer.candy3, currentEconomy.getPriceCandy3());
-            case 4 -> currentPlayer.sellCandy(currentPlayer.candy4, currentEconomy.getPriceCandy4());
-            case 5 -> currentPlayer.sellCandy(currentPlayer.candy5, currentEconomy.getPriceCandy5());
-            case 6 -> currentPlayer.sellCandy(currentPlayer.candy6, currentEconomy.getPriceCandy6());
+            case 1 -> currentPlayer.sellCandy(currentPlayer.candies.get(0), currentEconomy.getPriceCandy1());
+            case 2 -> currentPlayer.sellCandy(currentPlayer.candies.get(1), currentEconomy.getPriceCandy2());
+            case 3 -> currentPlayer.sellCandy(currentPlayer.candies.get(2), currentEconomy.getPriceCandy3());
+            case 4 -> currentPlayer.sellCandy(currentPlayer.candies.get(3), currentEconomy.getPriceCandy4());
+            case 5 -> currentPlayer.sellCandy(currentPlayer.candies.get(4), currentEconomy.getPriceCandy5());
+            case 6 -> currentPlayer.sellCandy(currentPlayer.candies.get(5), currentEconomy.getPriceCandy6());
             default -> {
                 break;
             }

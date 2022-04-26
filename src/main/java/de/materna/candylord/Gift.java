@@ -7,11 +7,11 @@ class Gift extends Event {
         System.out.println("You're lucky and get a gift from a fan");
         System.out.println("----------------------------------------");
         double random = Math.random();
-        if ( random < 0.166 ) player.candy1.quantity += ThreadLocalRandom.current().nextInt( 1, 10 );
-        if ( random < 0.333 ) player.candy2.quantity += ThreadLocalRandom.current().nextInt( 1, 10 );
-        if ( random < 0.5 ) player.candy3.quantity += ThreadLocalRandom.current().nextInt( 1, 10 );
-        if ( random < 0.666 ) player.candy4.quantity += ThreadLocalRandom.current().nextInt( 1, 10 );
-        if ( random < 0.833 ) player.candy5.quantity += ThreadLocalRandom.current().nextInt( 1, 10 );
-        player.candy6.quantity += ThreadLocalRandom.current().nextInt( 1, 10 );
+        if ( random < 0.166 ) player.candies.get(0).quantity += ThreadLocalRandom.current().nextInt( 1, 10 );
+        if ( random < 0.333 )  player.candies.get(1).quantity += ThreadLocalRandom.current().nextInt( 1, 10 );
+        if ( random < 0.5 )  player.candies.get(2).quantity += ThreadLocalRandom.current().nextInt( 1, 10 );
+        if ( random < 0.666 )  player.candies.get(3).quantity += ThreadLocalRandom.current().nextInt( 1, 10 );
+        if ( random < 0.833 )  player.candies.get(4).quantity += ThreadLocalRandom.current().nextInt( 1, 10 );
+        player.candies.get(5).quantity += ThreadLocalRandom.current().nextInt( 1, 10 );
     }
 }
