@@ -5,6 +5,8 @@ public class GameUtils {
 // Java program to calculate Distance Between
 // Two Points on Earth
 
+    private GameUtils(){}
+
         public static double distance(double lat1,
                                       double lat2, double lon1,
                                       double lon2)
@@ -35,11 +37,11 @@ public class GameUtils {
             return(c * r);
         }
 
-    public static double getTravelCost(String currentCity, CityENUM destinationCity, GameManager currentGame){
+    public static double getTravelCost(String currentCity, CityENUM destinationCity, GameConfiguration currentGame){
         CityENUM city = CityENUM.valueOf(currentCity);
         double distance = GameUtils.distance(city.getLat(), destinationCity.getLat(), city.getLon(), destinationCity.getLon());
-        return Math.round(( distance * currentGame.costsPerKilometer) * 100.0) / 100.0;
-    };
+        return Math.round(( distance * currentGame.getCostsPerKilometer()) * 100.0) / 100.0;
+    }
 
 }
 
